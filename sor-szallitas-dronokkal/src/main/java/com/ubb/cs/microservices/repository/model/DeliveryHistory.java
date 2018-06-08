@@ -1,6 +1,6 @@
 package com.ubb.cs.microservices.repository.model;
 
-import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,17 +10,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Szallitmany {
-
-    @Id
-    @GeneratedValue
-    private int id;
-    private Date date;
-    private String name;
-
+public class DeliveryHistory {
+	@Id
+	@GeneratedValue
+	private int id;
+//	private List<Delivery> deliveryHistory;
 }
