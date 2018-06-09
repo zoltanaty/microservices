@@ -1,7 +1,6 @@
 package com.ubb.cs.microservices.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,8 +27,13 @@ public class CustomerController implements ICrudController<Customer> {
 	@RequestMapping(method = RequestMethod.PUT)
 	@Override
 	public Customer update(@RequestParam Customer entity) {
-		Optional<Customer> customerToUpdate = customerRepository.findById(entity.getId());
-		return customerRepository.saveAndFlush(customerToUpdate.get());
+		Customer customerToUpdate = customerRepository.findById(entity.getId()).get();
+		
+		customerToUpdate.setFirstName(entity.getFirstName());
+		customerToUpdate.setLastName(entity.getLastName());
+		customerToUpdate.setEmailAddress(entity.getEmailAddress());
+		
+		return customerRepository.saveAndFlush(customerToUpdate);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -49,6 +53,5 @@ public class CustomerController implements ICrudController<Customer> {
 	public void delete(@RequestParam int id) {
 		Customer customerToDelete = customerRepository.findById(id).get();
 		customerRepository.delete(customerToDelete);
-
 	}
 }

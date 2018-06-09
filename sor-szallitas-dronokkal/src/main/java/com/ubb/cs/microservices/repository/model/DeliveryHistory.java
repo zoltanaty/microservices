@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,5 +19,6 @@ public class DeliveryHistory {
 	@Id
 	@GeneratedValue
 	private int id;
-//	private List<Delivery> deliveryHistory;
+	@OneToMany( targetEntity=Delivery.class )
+	private List<Delivery> delivery;
 }
