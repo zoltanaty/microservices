@@ -21,3 +21,7 @@ Microserveces, Docker, Kubernetes
 	list your deployments: kubectl get deployments
 	scale: kubectl scale deployments/[deployment_name] --replicas=4
 	check that there are 4 pods now: kubectl get pods -o wide
+
+Useful links:
+Kubernetes configuration: https://github.com/trisberg/s1p2017-boot-k8s/blob/master/demo-hello.adoc
+Scaling: https://kubernetes.io/docs/tutorials/kubernetes-basics/scale/scale-interactive/
