@@ -1,7 +1,0 @@
-gradlew build docker
-
-docker run --expose 8080 -p 8080:8080 -t com.microservices/sor-szallitas-dronokkal
-
-docker-machine ip
-
-docker stop [container id]
