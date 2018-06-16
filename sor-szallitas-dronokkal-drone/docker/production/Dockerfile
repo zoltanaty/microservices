@@ -1,6 +1,6 @@
 FROM openjdk:8-jdk-alpine
 
-ADD sor-szallitas-dronokkal.jar /srv
+ADD sor-szallitas-dronokkal-drone.jar /srv
 
 EXPOSE 8080
 
