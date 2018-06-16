@@ -50,7 +50,7 @@ public class CustomerController implements ICrudController<Customer> {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@Override
-	public void delete(@RequestParam int id) {
+	public void delete(@PathVariable int id) {
 		Customer customerToDelete = customerRepository.findById(id).get();
 		customerRepository.delete(customerToDelete);
 	}

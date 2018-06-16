@@ -3,8 +3,10 @@ package com.ubb.cs.microservices.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubb.cs.microservices.repository.DroneRepository;
@@ -19,13 +21,13 @@ public class DroneController implements ICrudController<Drone>{
 
 	@RequestMapping(method = RequestMethod.POST)
 	@Override
-	public Drone create(Drone entity) {
+	public Drone create(@RequestParam Drone entity) {
 		return droneRepository.saveAndFlush(entity);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
 	@Override
-	public Drone update(Drone entity) {
+	public Drone update(@RequestParam Drone entity) {
 		Drone droneToUpdate = droneRepository.findById(entity.getId()).get();
 		
 		droneToUpdate.setModelName(entity.getModelName());
@@ -43,13 +45,13 @@ public class DroneController implements ICrudController<Drone>{
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@Override
-	public Drone getById(int id) {
+	public Drone getById(@PathVariable int id) {
 		return droneRepository.findById(id).get();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@Override
-	public void delete(int id) {
+	public void delete(@PathVariable int id) {
 		Drone droneToDelete = droneRepository.findById(id).get();
 		droneRepository.delete(droneToDelete);
 		

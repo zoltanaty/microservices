@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -28,12 +30,12 @@ public class DeliveryController {
 	private DeliveryRepository deliveryRepository;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public Delivery create(Delivery entity) {
+	public Delivery create(@RequestParam Delivery entity) {
 		return deliveryRepository.saveAndFlush(entity);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public Delivery update(Delivery entity) {
+	public Delivery update(@RequestParam Delivery entity) {
 		Delivery deliveryToUpdate = deliveryRepository.findById(entity.getId()).get();
 
 		deliveryToUpdate.setCustomerId(entity.getCustomerId());
@@ -71,7 +73,7 @@ public class DeliveryController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public DeliveryEpo getById(int id) {
+	public DeliveryEpo getById(@PathVariable int id) {
 		Delivery delivery = deliveryRepository.findById(id).get();
 		
 		RestTemplate restTemplate = new RestTemplate();
@@ -91,7 +93,7 @@ public class DeliveryController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void delete(int id) {
+	public void delete(@PathVariable int id) {
 		Delivery deliveryToDelete = deliveryRepository.findById(id).get();
 		deliveryRepository.delete(deliveryToDelete);
 	}
