@@ -22,9 +22,13 @@ import com.ubb.cs.microservices.repository.model.Delivery;
 @RequestMapping(value = "/api/v1/delivery")
 public class DeliveryController {
 	
-	private static final String CUSTOMER_SERVICE_BASE_URL = "http://127.0.0.1:8001/api/v1/namespaces/default/services/sor-szallitas-dronokkal-customer/proxy/";
-	private static final String BEERS_PACKAGE_SERVICE_BASE_URL = "http://127.0.0.1:8001/api/v1/namespaces/default/services/sor-szallitas-dronokkal-beerspackage/proxy/";
-	private static final String DRONE_SERVICE_BASE_URL = "http://127.0.0.1:8001/api/v1/namespaces/default/services/sor-szallitas-dronokkal-drone/proxy/";
+//	private static final String CUSTOMER_SERVICE_BASE_URL = "http://127.0.0.1:8001/api/v1/namespaces/default/services/sor-szallitas-dronokkal-customer/proxy/";
+//	private static final String BEERS_PACKAGE_SERVICE_BASE_URL = "http://127.0.0.1:8001/api/v1/namespaces/default/services/sor-szallitas-dronokkal-beerspackage/proxy/";
+//	private static final String DRONE_SERVICE_BASE_URL = "http://127.0.0.1:8001/api/v1/namespaces/default/services/sor-szallitas-dronokkal-drone/proxy/";
+	
+	private static final String CUSTOMER_SERVICE_BASE_URL = "http://sor-szallitas-dronokkal-customer:8080/";
+	private static final String BEERS_PACKAGE_SERVICE_BASE_URL = "http://sor-szallitas-dronokkal-beerspackage:8080/";
+	private static final String DRONE_SERVICE_BASE_URL = "http://sor-szallitas-dronokkal-drone:8080/";
 
 	@Autowired
 	private DeliveryRepository deliveryRepository;
