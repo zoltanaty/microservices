@@ -10,6 +10,9 @@ Microserveces, Docker, Kubernetes
 	kubectl run sor --image [dockerhub_user]/[image_name]:[tag] --port 8080
 	kubectl expose deployment sor --type=NodePort
 
+	kubectl proxy
+	service can be reached at: http://127.0.0.1:8001/api/v1/namespaces/default/services/sor-deployment/proxy/
+
 	checking the Kubernetes url: minikube service sor --url
 	delete the resources: kubectl delete all -l run=sor
 
