@@ -1,24 +1,20 @@
 Microserveces, Docker, Kubernetes
 
-0. Login to docker via terminal: docker login
+0. (If projects were modified) Login to docker via terminal: docker login
 
-1. Building the project and pushing the created Docker image to dockerhub:
-	run the sor-szallitas-dronokkal/docker/build.sh script
+1. (If projects were modified) Building all 4 projects and pushing the created Docker image to dockerhub, by running the build.sh scripts
 
-2. Deploying on Kubernetes Cluster:
-	minikube start
-	kubectl run sor --image [dockerhub_user]/[image_name]:[tag] --port 8080
-	kubectl expose deployment sor --type=NodePort
+2. restarting the Kubernetes cluster:
+	run the restart_kubernetes_cluster.sh
 
-	kubectl proxy
-	service can be reached at: http://127.0.0.1:8001/api/v1/namespaces/default/services/sor-deployment/proxy/
+3. Deploying on Kubernetes Cluster:
+	run the kubernetes.deploy.sh
 
-	checking the Kubernetes url: minikube service sor --url
-	delete the resources: kubectl delete all -l run=sor
-
-3. Starting Dashboard:
-	kubectl proxy
-	dashboard url: http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/overview?namespace=default
+	Services can be reached at: 
+	http://127.0.0.1:8001/api/v1/namespaces/default/services/sor-szallitas-dronokkal-customer/proxy/api/v1/customer
+	http://127.0.0.1:8001/api/v1/namespaces/default/services/sor-szallitas-dronokkal-beerspackage/proxy/api/v1/beerspackage
+	http://127.0.0.1:8001/api/v1/namespaces/default/services/sor-szallitas-dronokkal-drone/proxy/api/v1/drone
+	http://127.0.0.1:8001/api/v1/namespaces/default/services/sor-szallitas-dronokkal-delivery/proxy/api/v1/delivery
 
 4. Scaling:
 	list your deployments: kubectl get deployments
@@ -28,3 +24,4 @@ Microserveces, Docker, Kubernetes
 Useful links:
 Kubernetes configuration: https://github.com/trisberg/s1p2017-boot-k8s/blob/master/demo-hello.adoc
 Scaling: https://kubernetes.io/docs/tutorials/kubernetes-basics/scale/scale-interactive/
+
